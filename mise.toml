@@ -1,0 +1,13 @@
+[tools]
+# A single complete LLVM prefix keeps clangd and clang++ on the same headers.
+"conda:clangdev" = "21.1.8"
+"conda:lldb" = "21.1.8"
+"conda:make" = "4.4.1"
+cmake = "3.31.12"
+ninja = "1.13.2"
+prek = "0.5.5"
+
+# conda:clangdev's executables live in dependencies, which mise's conda
+# backend does not expose by default. Add this project's installed prefix.
+[env]
+_.path = { path = "{{ tools['conda:clangdev'].path }}/bin", tools = true }
